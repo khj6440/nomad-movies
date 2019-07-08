@@ -11,15 +11,15 @@ const api = axios.create({
 
 
 export const movies = {
-    getNowPlaying:()=> api.get("movie/now_playing"),
-    getUpcoming : () =>api.get("movie/upcoming"),
-    getPopular : ()=>api.get("movie/popular"),
-    getMovie:(id) =>api.get(`movie/${id}`,{
+    getMovie:id =>api.get(`movie/${id}`,{
         params:{
             append_to_response : "videos"
         }
     }),
-    searchMovies:(term) =>api.get("search/movie",{
+    getNowPlaying:()=> api.get("movie/now_playing"),
+    getUpcoming : () =>api.get("movie/upcoming"),
+    getPopular : ()=>api.get("movie/popular"),
+    searchMovies:term =>api.get("search/movie",{
         params:{
             query : encodeURIComponent(term)
         }

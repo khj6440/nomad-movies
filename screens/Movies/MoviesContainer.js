@@ -19,7 +19,7 @@ export default class MoviesContainer extends React.Component{
             ({data:{results:upcoming}} = await movies.getUpcoming());
             ({data:{results:popular}} = await
             movies.getPopular());
-            ({data:{result:nowPlaying}} = await 
+            ({data:{results:nowPlaying}} = await 
             movies.getNowPlaying()); 
         }catch(error){
             console.log(error);
