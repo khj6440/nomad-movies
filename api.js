@@ -5,7 +5,7 @@ const api = axios.create({
     baseURL:"https://api.themoviedb.org/3/",
     params :{
         api_key:"e91e0123630814f9cb26d9b643cefce1",
-        language: "en-US"
+        language: "ko-KR"
     }
 });
 
@@ -27,7 +27,7 @@ export const movies = {
 };
 
 export const tv={
-    getTopRated : () =>api.get("tv/top_rated"),
+    getAiringThisWeek : () =>api.get("tv/on_the_air"),
     getPopular : ()=>api.get("tv/popular"),
     getAiringToday : ()=>api.get("tv/airing_today"),
     getShow:(id) =>api.get(`tv/${id}`,{
