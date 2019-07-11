@@ -6,6 +6,7 @@ import Layout from "../constants/Layout";
 import MoviePoster from "./MoviePoster";
 import { TINT_COLOR, GREY_COLOR } from "../constants/Colors";
 import MovieRating from "./MovieRating";
+import {withNavigation} from "react-navigation";
 
 //네이티브에서는 이미지를 넣으려면 Image컴포넌트를 사용해야한다
 const Container = styled.View`
@@ -62,11 +63,13 @@ const BtnText = styled.Text`
 
 
 const MovieSlide = ({
+  id,
   posterPhoto,
   backgroundPhoto,
   title,
   voteAvg,
-  overView
+  overView,
+  navigation
 }) => (
   <Container>
     <BgImage source={{ uri: makePhotoUrl(backgroundPhoto) }} />
@@ -76,7 +79,10 @@ const MovieSlide = ({
           <Title>{title}</Title>
           {voteAvg?<VoteContainer><MovieRating votes={voteAvg} inSlide={true}/></VoteContainer>:null}
           {overView? <Overview>{overView.length > 117?`${overView.substring(0,120)}...`:overView}</Overview>:null}
-          <BtnContainer>
+          <BtnContainer onPress={()=>navigation.navigate({
+            routeName:"Detail",
+            params:{isMovie:true,id}
+          })}>
             <BtnText>More Details</BtnText>
           </BtnContainer>
         
@@ -95,4 +101,4 @@ MovieSlide.propType = {
   overView: propType.string.isRequired
 };
 
-export default MovieSlide;
+export default withNavigation(MovieSlide);
