@@ -27,7 +27,7 @@ const MovieSlider = ({movies}) =>
         .filter(movie=> movie.backdrop_path !== null)
         .map(movie=>(
           <View key={movie.id}>
-            <MovieSlide overView={movie.overview} voteAvg={movie.vote_average} title={movie.title} id={movie.id} backgroundPhoto={movie.backdrop_path}
+            <MovieSlide overview={movie.overview} voteAvg={movie.vote_average} title={movie.title} id={movie.id} backgroundPhoto={movie.backdrop_path}
             posterPhoto ={movie.poster_path}/>
           </View>
         ))}

@@ -5,7 +5,7 @@ import MoviePoster from "./MoviePoster";
 import MovieRating from "./MovieRating";
 import { GREY_COLOR } from "../constants/Colors";
 import { TouchableWithoutFeedback } from "react-native";
-import {withNavigation} from "react-navigation";
+import { withNavigation } from "react-navigation";
 
 const Container = styled.View`
   align-items: center;
@@ -43,10 +43,14 @@ const MovieItem = ({
   isMovie = true,
   navigation
 }) => (
-  <TouchableWithoutFeedback onPress={()=>navigation.navigate({
-    routeName:"Detail",
-    params:{isMovie,id}
-  })}>
+  <TouchableWithoutFeedback
+    onPress={() =>
+      navigation.navigate({
+        routeName: "Detail",
+        params: { isMovie, id, posterPhoto, title,backgroundPhoto:null, voteAvg, overview }
+      })
+    }
+  >
     {horizontal ? (
       <HContainer>
         <MoviePoster path={posterPhoto} />
@@ -72,7 +76,7 @@ const MovieItem = ({
       </Container>
     )}
   </TouchableWithoutFeedback>
-)
+);
 MovieItem.propType = {
   id: propType.number.isRequired,
   posterPhoto: propType.string.isRequired,

@@ -68,7 +68,7 @@ const MovieSlide = ({
   backgroundPhoto,
   title,
   voteAvg,
-  overView,
+  overview,
   navigation
 }) => (
   <Container>
@@ -77,11 +77,15 @@ const MovieSlide = ({
       <MoviePoster path={posterPhoto}/>
         <Column>
           <Title>{title}</Title>
-          {voteAvg?<VoteContainer><MovieRating votes={voteAvg} inSlide={true}/></VoteContainer>:null}
-          {overView? <Overview>{overView.length > 117?`${overView.substring(0,120)}...`:overView}</Overview>:null}
+          {voteAvg?<VoteContainer><MovieRating votes={voteAvg} inSlidex={true}/></VoteContainer>:null}
+          {overview? <Overview>{overview.length > 117?`${overview.substring(0,120)}...`:overview}</Overview>:null}
           <BtnContainer onPress={()=>navigation.navigate({
             routeName:"Detail",
-            params:{isMovie:true,id}
+            params:{isMovie:true,id,posterPhoto,
+              backgroundPhoto,
+              title,
+              voteAvg,
+              overview}
           })}>
             <BtnText>More Details</BtnText>
           </BtnContainer>
@@ -98,7 +102,7 @@ MovieSlide.propType = {
   backgroundPhoto: propType.string.isRequired,
   title: propType.string.isRequired,
   voteAvg: propType.number.isRequired,
-  overView: propType.string.isRequired
+  overview: propType.string.isRequired
 };
 
 export default withNavigation(MovieSlide);
